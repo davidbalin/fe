@@ -1,24 +1,28 @@
-import React, { useState, useEffect } from 'react';
+
+
 import axios from 'axios';
-import { BrowserRouter as Router, Route, Link, Routes, Outlet} from 'react-router-dom';
-import PostTypeContent from './PostTypeContent';
+import React, { useState, useEffect } from "react";
+import { useParams } from 'react-router-dom';
+
+
+
+
 import Navbar from './Navbar';
+
 import Contents from './Contents';
-import Search from './Search'; 
-import NavbarMain from './NavbarMain';
-import LanguageContext from './LanguageContext';
+
+import Search from './Search';
 
 
-//import i18n 
+function PostTypeContent() {
+  const { type } = useParams();
 
-
-const App = () => {
-  const [postTypesPosts, setPostTypesPosts] = useState({});
-
+  
+  
 
   const [content, setContent] = useState("default");
   const [posts, setPosts] = useState([]);
-  const [language, setLanguage] = useState('fr');
+  const [language, setLanguage] = useState('en');
   const [results, setResults] = useState([]);
   const [query, setQuery] = useState(''); // Add this line
 
@@ -26,14 +30,38 @@ const App = () => {
   const [hasSearched, setHasSearched] = useState(false); // new state
 
 
+  const [defaultContent, setDefaultContent] = useState(null); // new state
+
+  const [translations, setTranslations] = useState({}); // New state variable
+
+
+  
+
+
+
 
 
   useEffect(() => {
-    axios.get(`http://ukrainetest.flywheelsites.com/wp-json/wp/v2/posts?lang=${language}`)
-      .then(res => setPosts(res.data))
-      .catch(err => console.log(err));
-  }, [language]);
+    axios.get(`http://ukrainetest.flywheelsites.com/wp-json/wp/v2/${type}?lang=${language}`)
+      .then(res => {
+        // Check if the post has the default taxonomy and if it is not empty
+        const defaultPost = res.data.find(post => post.default && post.default.length > 0);
+        
+        if (defaultPost) {
+          setDefaultContent(defaultPost.content.rendered);
+          setTranslations(defaultPost.translations); // Store the translations
+        } else {
+          setDefaultContent("no default content");
+        }
 
+        const nonDefaultPosts = res.data.filter(post => !post.default || post.default.length === 0);
+        setPosts(nonDefaultPosts);
+      })
+      .catch(err => console.log(err));
+  }, [language, type]);
+  console.log(posts);
+
+  
 
 
   const handleContentChange = (newContent) => {
@@ -59,27 +87,24 @@ const App = () => {
   };
 
 
-  const handleLanguageChange = (newLanguage) => {
+  const handleLanguageChange = async (newLanguage) => {
     setLanguage(newLanguage);
-  };
+    // Fetch the translated content
+    const response = await axios.get(`http://ukrainetest.flywheelsites.com/wp-json/wp/v2/${type}/${translations[newLanguage]}?lang=${newLanguage}`);
+    setDefaultContent(response.data.content.rendered);
+  }
+
+  
 
 
   const search = async (query) => {
     try {
       console.log(query);
       setQuery(query);
-  
-      const response = await axios.get(`http://ukrainetest.flywheelsites.com/wp-json/wp/v2/search/?search=${query}`);
+      const response = await axios.get(`http://ukrainetest.flywheelsites.com/wp-json/wp/v2/posts?search=${query}`);
       console.log(response.data);
       setHasSearched(true);
-      
-      // We'll map through the results and make a request for each
-      const fullResults = await Promise.all(response.data.map(async (result) => {
-        const resultResponse = await axios.get(result._links.self[0].href);
-        return resultResponse.data;
-      }));
-  
-      setResults(fullResults);
+      setResults(response.data);
       setContent("searchResults");
     } catch (error) {
       console.error(error);
@@ -87,6 +112,7 @@ const App = () => {
   };
 
 
+ 
 
 
 
@@ -107,58 +133,12 @@ const App = () => {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  useEffect(() => {
-    const excludeTypes = ['Pages', 'Media', 'Navigation Menu Items', 'Reusable blocks', 'Templates', 'Template Parts', 'Navigation Menus'];
-
-    axios.get('http://ukrainetest.flywheelsites.com/wp-json/wp/v2/types')
-      .then((response) => {
-        const postTypes = Object.values(response.data)
-          .filter(type => !excludeTypes.includes(type.name) && type._links && type._links['wp:items'] && type._links['wp:items'][0] && type._links['wp:items'][0].href);
-
-        console.log(postTypes);
-
-        const postPromises = postTypes.map(type =>
-          axios.get(type._links['wp:items'][0].href)
-            .then(response => {
-              return { [type.name]: response.data.map(post => post.title.rendered) };
-            })
-        );
-
-        Promise.all(postPromises)
-          .then(postArrays => {
-            const combinedPosts = Object.assign({}, ...postArrays);
-            setPostTypesPosts(combinedPosts);
-          });
-      })
-      .catch((error) => console.error('Error:', error));
-  }, []);
 
   return (
-    <div className ="body-3">
-    <Router>
-  <NavbarMain posts={Object.keys(postTypesPosts)} />
-  <Routes>
-    <Route path="/" element={
+    <div className="">
       <>
-        <div className="">
-      <>
-  
+  {/*  This site was created in Webflow. https://www.webflow.com  */}
+  {/*  Last Published: Tue Jun 27 2023 20:45:03 GMT+0000 (Coordinated Universal Time)  */}
   <meta charSet="utf-8" />
   <title>Ukraine to USA Resources</title>
   <meta content="Ukraine to USA Resources" property="og:title" />
@@ -180,7 +160,7 @@ const App = () => {
   />
   <link href="images/favicon.png" rel="shortcut icon" type="image/x-icon" />
   <link href="images/webclip.svg" rel="apple-touch-icon" />
-  {/* <Navbar onLinkClick={handleContentChange} posts={posts} /> */}
+  <Navbar className="styleguide_sidebar" onLinkClick={handleContentChange} posts={posts} type={type}/>
   {/* <div className="styleguide_sidebar">
     <div className="styleguide_list">
       <h1 className="text-big">Ukraine -&gt; USA</h1>
@@ -212,9 +192,15 @@ const App = () => {
     </div>
   </div> */}
   <div className="div-block-8 not-listening">
+  <select onChange={e => handleLanguageChange(e.target.value)}>
+    <option value="en">English</option>
+    <option value="ru">Russian</option>
+    <option value="uk">Ukrainian</option>
+</select>
+
     <div className="w-layout-blockcontainer w-container">
       <div className="country-title">
-        <h1 className="heading-3">Ukraine -&gt; USA</h1>
+        <h1 className="heading-3">{type}</h1>
       </div>
       <div className="div-block-12">
         <a href="#" className="link-block-20 w-inline-block">
@@ -254,6 +240,7 @@ const App = () => {
       </div>
       <div>
         <div className="w-layout-grid grid-5">
+          
           <div>
             <Search query={query} onQueryChange={setQuery} onSearch={search} resetSearch={resetSearch} resetSearchHandled={resetSearchHandled} />
           </div>
@@ -286,6 +273,7 @@ const App = () => {
         </div>
       </div>
       <div className="div-block-6">
+        
         <a
           id="w-node-_049fd62e-9840-648c-7650-c63f74ab0635-e0625fb8"
           href="#"
@@ -311,17 +299,13 @@ const App = () => {
       </div>
       <div className="div-block-7">
       
-        <select onChange={e => handleLanguageChange(e.target.value)}>
-          <option value="en">English</option>
-          <option value="ru">Russian</option>
-          <option value="uk">Ukrainian</option>
-          </select>
+        
         
 
 
-        <Contents content = {content} onBackClick={handleBackClick} 
+        <Contents className = "content-for-website" content = {content} onBackClick={handleBackClick} 
         posts={posts} results = {results} onBackToDefaultClick={handleBackToDefaultClick} searchQuery={query} 
-        hasSearched={hasSearched}  />
+        hasSearched={hasSearched} defaultContent={defaultContent}  />
       </div>
     </div>
   </div>
@@ -407,35 +391,7 @@ const App = () => {
 
         
     </div>
-  
-
-
-        
-        {/* other homepage components */}
-      </>
-    }/>
-    {Object.entries(postTypesPosts).map(([postType, posts], index) => (
-        
-        <Route path={`/:type`} key={index} element={<PostTypeContent />} />
-
-    ))}
-  </Routes>
-</Router>
-
- 
-
-
-    
-
-
-
-    </div>
-
-    
-
-    
-
   );
 }
 
-export default App;
+export default PostTypeContent;

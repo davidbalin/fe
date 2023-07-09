@@ -1,0 +1,81 @@
+import React, { useState } from 'react';
+
+const Contents = ({ content, posts, results, onBackClick, onBackToDefaultClick, searchQuery, hasSearched, defaultContent  }) => {
+
+    
+     
+
+    const [selectedSearchResult, setSelectedSearchResult] = useState(null);
+    const displayContent = posts.find(post => post.title.rendered === content);
+
+    const handleSearchResultClick = (post) => {
+        setSelectedSearchResult(post);
+    };
+
+    const handleBackToResultsClick = () => {
+        setSelectedSearchResult(null);
+    };
+
+    const extractPreview = (content, term) => {
+        const lowerCaseContent = content.toLowerCase();
+        const lowerCaseTerm = term.toLowerCase();
+
+        const index = lowerCaseContent.indexOf(lowerCaseTerm);
+
+        if (index !== -1) {
+            const start = Math.max(index - 100, 0);
+            const end = Math.min(index + term.length + 100, content.length);
+
+            return '...' + content.substring(start, end) + '...';
+        }
+
+        return content;
+    };
+
+    if (selectedSearchResult) {
+        return (
+            <div>
+                <button onClick={handleBackToResultsClick}>Back to search results</button>
+                <div dangerouslySetInnerHTML={{ __html: selectedSearchResult.content.rendered }} />
+            </div>
+        );
+    }
+
+    if (results && results.length > 0) {
+        return (
+            <div className = "content-for-website" >
+                <button onClick={onBackToDefaultClick}>Back to Resources Page</button>
+                {results.map((result) => (
+                    <div key={result.id} onClick={() => handleSearchResultClick(result)}>
+                        
+
+                        <h3>{result.title.rendered}</h3>
+                        <p dangerouslySetInnerHTML={{ __html: extractPreview(result.content.rendered, searchQuery) }} />
+                    </div>
+                ))}
+                
+            </div>
+        );
+    }
+
+    if (hasSearched && (!results || results.length === 0)) {
+        return (
+            <div>
+                <button onClick={onBackToDefaultClick}>Back to Resources Page</button>
+                <p>No search results</p>
+            </div>
+        );
+    }
+
+    return (
+        <div >
+        {content !== "default" && <button class = "backbutton" onClick={onBackClick}>Back</button>}
+        {displayContent 
+            ? <div dangerouslySetInnerHTML={{__html: displayContent.content.rendered}} />
+            : <div dangerouslySetInnerHTML={{__html: defaultContent}} />
+        }
+    </div>
+    );
+};
+
+export default Contents;

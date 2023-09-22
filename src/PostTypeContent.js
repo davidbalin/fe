@@ -42,7 +42,7 @@ function PostTypeContent() {
 
 
   useEffect(() => {
-    axios.get(`http://ukrainetest.flywheelsites.com/wp-json/wp/v2/${type}?lang=${language}`)
+    axios.get(`https://ukrainetest.flywheelsites.com/wp-json/wp/v2/${type}?lang=${language}`)
       .then(res => {
         // Check if the post has the default taxonomy and if it is not empty
         const defaultPost = res.data.find(post => post.default && post.default.length > 0);
@@ -90,7 +90,7 @@ function PostTypeContent() {
   const handleLanguageChange = async (newLanguage) => {
     setLanguage(newLanguage);
     // Fetch the translated content
-    const response = await axios.get(`http://ukrainetest.flywheelsites.com/wp-json/wp/v2/${type}/${translations[newLanguage]}?lang=${newLanguage}`);
+    const response = await axios.get(`https://ukrainetest.flywheelsites.com/wp-json/wp/v2/${type}/${translations[newLanguage]}?lang=${newLanguage}`);
     setDefaultContent(response.data.content.rendered);
   }
 
@@ -101,7 +101,7 @@ function PostTypeContent() {
     try {
       console.log(query);
       setQuery(query);
-      const response = await axios.get(`http://ukrainetest.flywheelsites.com/wp-json/wp/v2/posts?search=${query}`);
+      const response = await axios.get(`https://ukrainetest.flywheelsites.com/wp-json/wp/v2/posts?search=${query}`);
       console.log(response.data);
       setHasSearched(true);
       setResults(response.data);
@@ -192,11 +192,8 @@ function PostTypeContent() {
     </div>
   </div> */}
   <div className="div-block-8 not-listening">
-  <select onChange={e => handleLanguageChange(e.target.value)}>
-    <option value="en">English</option>
-    <option value="ru">Russian</option>
-    <option value="uk">Ukrainian</option>
-</select>
+  
+  
 
     <div className="w-layout-blockcontainer w-container">
       <div className="country-title">
@@ -299,7 +296,11 @@ function PostTypeContent() {
       </div>
       <div className="div-block-7">
       
-        
+      {/* <select  class = "select-dropdown"onChange={e => handleLanguageChange(e.target.value)}>
+          <option value="en">English</option>
+          <option value="ru">Russian</option>
+          <option value="uk">Ukrainian</option>
+      </select> */}
         
 
 
@@ -320,21 +321,30 @@ function PostTypeContent() {
     className="navbar navbar-3 w-nav"
   >
     <div className="div-block-22">
-      <div data-hover="false" data-delay={0} className="w-dropdown">
-        <div className="w-dropdown-toggle">
-          <div className="w-icon-dropdown-toggle" />
-          <div className="text-block-22">EN</div>
-        </div>
-        <nav className="w-dropdown-list">
-          <a href="#" className="dropdown-link-3 linkoo w-dropdown-link">
-            Рус
-          </a>
-          <a href="#" className="dropdown-link-4 linkoo w-dropdown-link">
-            Укр
-          </a>
-        </nav>
+  <div data-hover="false" data-delay={0} className="w-dropdown">
+    <div className="w-dropdown-toggle">
+      <div className="w-icon-dropdown-toggle" />
+      <div className="text-block-22">
+        <select
+          className="select-dropdown"
+          onChange={e => handleLanguageChange(e.target.value)}
+        >
+          <option value="en">EN</option>
+          <option value="ru">Рус</option>
+          <option value="uk">Укр</option>
+        </select>
       </div>
     </div>
+    <nav className="w-dropdown-list">
+      <a href="#" className="dropdown-link-3 linkoo w-dropdown-link">
+        Рус
+      </a>
+      <a href="#" className="dropdown-link-4 linkoo w-dropdown-link">
+        Укр
+      </a>
+    </nav>
+  </div>
+</div>
     <nav role="navigation" className="nav-menu-12 w-nav-menu">
       <img
         src="images/Ralphie.png"
@@ -384,7 +394,7 @@ function PostTypeContent() {
       </a>
     </nav>
     <div className="div-block-11">
-      <a href="index.html" className="link-block-22 w-inline-block" />
+      <a href="/" className="link-block-22 w-inline-block" />
     </div>
   </div>
 </>

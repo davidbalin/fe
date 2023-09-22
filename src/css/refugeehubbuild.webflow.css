@@ -56,7 +56,22 @@
     src: url('../fonts/Inter-Black.ttf') format('truetype');
   }
   
-  
+  .select-dropdown {
+    padding: 8px 12px;
+    border: 1px solid #cccccc;
+    border-radius: 4px;
+    font-size: 16px;
+    background-color: #ffffff;
+    /* background-image: url('../../public/images/mingcute_down-fill.svg');  */
+    background-repeat: no-repeat;
+    background-position: 95% center;
+    appearance: none; /* Remove default styling */
+    -moz-appearance: none; /* Firefox */
+    -webkit-appearance: none; /* WebKit */
+    cursor: pointer;
+    outline: none; /* Remove default outline */
+    transition: border-color 0.3s ease;
+  }
   
   
   

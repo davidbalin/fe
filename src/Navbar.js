@@ -1,5 +1,7 @@
+import React from 'react';
+import { Link } from 'react-router-dom';
+
 const Navbar = ({ onLinkClick, posts, type }) => {
-  // Make sure posts are available and sort them
   const sortedPosts = posts && [...posts].sort((a, b) => new Date(a.date) - new Date(b.date));
 
   return (
@@ -10,10 +12,14 @@ const Navbar = ({ onLinkClick, posts, type }) => {
           <div className="nav-menu-wrapper">
             <div className="nav-link-wrapper">
               {sortedPosts && sortedPosts.map(post => (
-                post.title && <a 
-                  href="#" 
+                post.title && 
+                <a 
+                  href="#"  // Retain the href attribute
                   className="styleguide_link"  
-                  onClick={() => onLinkClick(post.title.rendered)} 
+                  onClick={(e) => { // Add event parameter
+                    e.preventDefault();  // Prevent the default navigation behavior
+                    onLinkClick(post.title.rendered);
+                  }}
                   key={post.id}
                 >
                   <strong className="bold-text-2">{post.title.rendered}</strong>

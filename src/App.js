@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { BrowserRouter as Router, Route, Link, Routes, Outlet} from 'react-router-dom';
+import { BrowserRouter as Router, Route, Link, Routes, Outlet, BrowserRouter} from 'react-router-dom';
 import PostTypeContent from './PostTypeContent';
 import Navbar from './Navbar';
 import Contents from './Contents';
 import Search from './Search'; 
 import NavbarMain from './NavbarMain';
 import LanguageContext from './LanguageContext';
+import Home from './Home';
 
 
 //import i18n 
@@ -14,6 +15,9 @@ import LanguageContext from './LanguageContext';
 
 const App = () => {
   const [postTypesPosts, setPostTypesPosts] = useState({});
+  const [isLoading, setIsLoading] = useState(true);
+  
+
 
 
   const [content, setContent] = useState("default");
@@ -29,7 +33,7 @@ const App = () => {
 
 
   useEffect(() => {
-    axios.get(`http://ukrainetest.flywheelsites.com/wp-json/wp/v2/posts?lang=${language}`)
+    axios.get(`https://ukrainetest.flywheelsites.com/wp-json/wp/v2/posts?lang=${language}`)
       .then(res => setPosts(res.data))
       .catch(err => console.log(err));
   }, [language]);
@@ -69,7 +73,7 @@ const App = () => {
       console.log(query);
       setQuery(query);
   
-      const response = await axios.get(`http://ukrainetest.flywheelsites.com/wp-json/wp/v2/search/?search=${query}`);
+      const response = await axios.get(`https://ukrainetest.flywheelsites.com/wp-json/wp/v2/search/?search=${query}`);
       console.log(response.data);
       setHasSearched(true);
       
@@ -89,44 +93,11 @@ const App = () => {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
   useEffect(() => {
-    const excludeTypes = ['Pages', 'Media', 'Navigation Menu Items', 'Reusable blocks', 'Templates', 'Template Parts', 'Navigation Menus'];
+    const excludeTypes = ['Pages', 'Media', 'Navigation Menu Items', 'Reusable blocks', 'Templates', 'Template Parts', 'Navigation Menus','Posts', 'Patterns'];
+    setIsLoading(true);
 
-    axios.get('http://ukrainetest.flywheelsites.com/wp-json/wp/v2/types')
+    axios.get('https://ukrainetest.flywheelsites.com/wp-json/wp/v2/types')
       .then((response) => {
         const postTypes = Object.values(response.data)
           .filter(type => !excludeTypes.includes(type.name) && type._links && type._links['wp:items'] && type._links['wp:items'][0] && type._links['wp:items'][0].href);
@@ -144,14 +115,23 @@ const App = () => {
           .then(postArrays => {
             const combinedPosts = Object.assign({}, ...postArrays);
             setPostTypesPosts(combinedPosts);
+            
           });
+
+          setIsLoading(false);
       })
       .catch((error) => console.error('Error:', error));
   }, []);
 
   return (
     <div className ="body-3">
-    <Router>
+    {isLoading ? (
+      <div className="loading-screen">
+        
+        {/* You can replace the above with a spinner or any loading animation you prefer */}
+      </div>
+    ) : (
+      <BrowserRouter>
   <NavbarMain posts={Object.keys(postTypesPosts)} />
   <Routes>
     <Route path="/" element={
@@ -311,17 +291,22 @@ const App = () => {
       </div>
       <div className="div-block-7">
       
-        <select onChange={e => handleLanguageChange(e.target.value)}>
+        {/* <select className="select-dropdown" onChange={e => handleLanguageChange(e.target.value)}>
           <option value="en">English</option>
           <option value="ru">Russian</option>
           <option value="uk">Ukrainian</option>
-          </select>
+        </select> */}
         
 
 
-        <Contents content = {content} onBackClick={handleBackClick} 
+          <Contents content = {content} onBackClick={handleBackClick} 
         posts={posts} results = {results} onBackToDefaultClick={handleBackToDefaultClick} searchQuery={query} 
         hasSearched={hasSearched}  />
+
+
+        <p>lorem ipsum</p>
+
+        
       </div>
     </div>
   </div>
@@ -341,6 +326,11 @@ const App = () => {
           <div className="w-icon-dropdown-toggle" />
           <div className="text-block-22">EN</div>
         </div>
+
+
+
+
+
         <nav className="w-dropdown-list">
           <a href="#" className="dropdown-link-3 linkoo w-dropdown-link">
             Рус
@@ -349,58 +339,16 @@ const App = () => {
             Укр
           </a>
         </nav>
+
+        
+
+
+
       </div>
     </div>
-    <nav role="navigation" className="nav-menu-12 w-nav-menu">
-      <img
-        src="images/Ralphie.png"
-        width={100}
-        sizes="100vw"
-        srcSet="images/Ralphie-p-500.png 500w, images/Ralphie.png 618w"
-        alt=""
-        className="image-7"
-      />
-      <a href="#" className="nav-link-19 w-nav-link">
-        newsletter
-      </a>
-      <a
-        href="#"
-        className="nav-link-19 w-hidden-main w-hidden-medium w-hidden-small w-hidden-tiny w-nav-link"
-      >
-        Layout 2
-      </a>
-      <a href="#" className="nav-link-19 w-nav-link">
-        read more
-      </a>
-      <a
-        href="#"
-        className="nav-link-19 w-hidden-main w-hidden-medium w-hidden-small w-hidden-tiny w-nav-link"
-      >
-        Portfolio
-      </a>
-      <a
-        data-ix="fade-in-on-click"
-        href="#"
-        className="nav-link-19 w-hidden-main w-hidden-medium w-hidden-small w-hidden-tiny w-nav-link"
-      >
-        Newsletter
-      </a>
-      <a
-        href="#"
-        className="nav-link-19 w-hidden-main w-hidden-medium w-hidden-small w-hidden-tiny w-nav-link"
-      >
-        Journal
-      </a>
-      <a
-        href="https://orangecattle.com"
-        target="_blank"
-        className="nav-link-19 w-nav-link"
-      >
-        contact
-      </a>
-    </nav>
+   
     <div className="div-block-11">
-      <a href="index.html" className="link-block-22 w-inline-block" />
+      <a href="/" className="link-block-22 w-inline-block" />
     </div>
   </div>
 </>
@@ -420,7 +368,7 @@ const App = () => {
 
     ))}
   </Routes>
-</Router>
+</BrowserRouter> )}
 
  
 

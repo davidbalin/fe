@@ -24,3 +24,4 @@ const NavbarMain = ({ posts }) => {
 }
 
 export default NavbarMain;
+ 

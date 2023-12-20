@@ -258,7 +258,7 @@ function PostTypeContent() {
                   Ask AI
                 </div>
                 <img
-                  src="images/mdi_magic.svg"
+                  src="/images/mdi_magic.svg"
                   loading="lazy"
                   id="w-node-_7c9bd441-0aae-a0af-0675-06cc9a9e54a3-e0625fb8"
                   alt=""

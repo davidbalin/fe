@@ -1,80 +1,7 @@
-
-/* add inter font to whole website */
-
-/* In your CSS file */
-@font-face {
-    font-family: 'Inter';
-    font-weight: 100;
-    src: url('../fonts/Inter-Thin.ttf') format('truetype');
+:root {
+    --white: white;
+    --black: black;
   }
-  
-  @font-face {
-    font-family: 'Inter';
-    font-weight: 200;
-    src: url('../fonts/Inter-ExtraLight.ttf') format('truetype');
-  }
-  
-  @font-face {
-    font-family: 'Inter';
-    font-weight: 300;
-    src: url('../fonts/Inter-Light.ttf') format('truetype');
-  }
-  
-  @font-face {
-    font-family: 'Inter';
-    font-weight: 400;
-    src: url('../fonts/Inter-Regular.ttf') format('truetype');
-  }
-  
-  @font-face {
-    font-family: 'Inter';
-    font-weight: 500;
-    src: url('../fonts/Inter-Medium.ttf') format('truetype');
-  }
-  
-  @font-face {
-    font-family: 'Inter';
-    font-weight: 600;
-    src: url('../fonts/Inter-SemiBold.ttf') format('truetype');
-  }
-  
-  @font-face {
-    font-family: 'Inter';
-    font-weight: 700;
-    src: url('../fonts/Inter-Bold.ttf') format('truetype');
-  }
-  
-  @font-face {
-    font-family: 'Inter';
-    font-weight: 800;
-    src: url('../fonts/Inter-ExtraBold.ttf') format('truetype');
-  }
-  
-  @font-face {
-    font-family: 'Inter';
-    font-weight: 900;
-    src: url('../fonts/Inter-Black.ttf') format('truetype');
-  }
-  
-  .select-dropdown {
-    padding: 8px 12px;
-    border: 1px solid #cccccc;
-    border-radius: 4px;
-    font-size: 16px;
-    background-color: #ffffff;
-    /* background-image: url('../../public/images/mingcute_down-fill.svg');  */
-    background-repeat: no-repeat;
-    background-position: 95% center;
-    appearance: none; /* Remove default styling */
-    -moz-appearance: none; /* Firefox */
-    -webkit-appearance: none; /* WebKit */
-    cursor: pointer;
-    outline: none; /* Remove default outline */
-    transition: border-color 0.3s ease;
-  }
-  
-  
-  
   
   .w-layout-blockcontainer {
     max-width: 940px;
@@ -107,12 +34,12 @@
   body {
     color: #333;
     padding: 60px;
-    font-family: Inter, sans-serif;
+    font-family: Arial, Helvetica Neue, Helvetica, sans-serif;
     font-size: 14px;
     line-height: 20px;
   }
   
-  .hero_home-2 {
+  .h_hero_home-2 {
     height: 100vh;
     background-color: #fff;
     border-bottom: 1px solid #dfe0e2;
@@ -121,16 +48,16 @@
     display: flex;
   }
   
-  .hero_content-2 {
+  .h_hero_content-2 {
     width: 50vw;
     flex: 0 auto;
     align-self: center;
     padding-left: 72px;
     padding-right: 140px;
-    font-family: Inter, sans-serif;
+    font-family: sofia-pro;
   }
   
-  .topheading-2 {
+  .h_topheading-2 {
     color: #717177;
     text-transform: uppercase;
     margin-bottom: 4px;
@@ -139,19 +66,6 @@
     font-weight: 700;
   }
   
-  .largeheading-2 {
-    letter-spacing: -2px;
-    margin-top: 0;
-    margin-bottom: 24px;
-    margin-left: -3px;
-    font-family: Inter, sans-serif;
-    font-size: 4vw;
-    font-weight: 700;
-    line-height: 1em;
-        line-height: 50px;
-
-  }
-
   .h_largeheading-2 {
     letter-spacing: -2px;
     margin-top: 0;
@@ -161,18 +75,14 @@
     font-size: 4vw;
     font-weight: 700;
     line-height: 1em;
-        
-
   }
   
-  .paragraph-19.cc-large {
+  .h_paragraph-19.cc-large {
     font-size: 16px;
     line-height: 1.8em;
-        line-height: 50px;
-
   }
   
-  .paragraph-19.cc-large.cc-w90 {
+  .h_paragraph-19.cc-large.cc-w90 {
     width: 90%;
     color: #717177;
     font-family: Inter, sans-serif;
@@ -182,10 +92,10 @@
     display: block;
   }
   
-  .hero_photo-3 {
+  .h_hero_photo-3 {
     width: 50vw;
     height: 100%;
-    background-image: url('../../public/images/Untitled-design-1.png');
+    background-image: url('../images/Untitled-design-1.png');
     background-position: 50%;
     background-repeat: no-repeat;
     background-size: contain;
@@ -194,48 +104,47 @@
     padding-right: 72px;
   }
   
-  .image-55 {
+  .h_image-55 {
     border: 3px solid rgba(34, 33, 33, .86);
     border-radius: 1000px;
   }
   
-  .paragraph-4 {
+  .h_paragraph-4 {
     color: #717177;
     margin-top: 10px;
-    font-family: Inter, sans-serif;
+    font-family: sofia-pro;
     font-size: 1.4em;
     font-weight: 400;
     line-height: 1.5em;
-    
   }
   
-  .rich-text-block-2 {
+  .h_rich-text-block-2 {
     margin-top: 10px;
     margin-bottom: 10px;
   }
   
-  .article-body-column {
+  .h_article-body-column {
     margin-top: 50px;
   }
   
-  .link-block-19 {
+  .h_link-block-19 {
     color: #333;
     text-decoration: none;
   }
   
-  .big-image {
+  .h_big-image {
     border: 6px solid #fff;
     box-shadow: 0 0 0 1px rgba(0, 0, 0, .12);
   }
   
-  .author-social-links {
+  .h_author-social-links {
     text-align: center;
     border-top: 1px solid rgba(0, 0, 0, .09);
     margin-top: 32px;
     padding-top: 32px;
   }
   
-  .link-it-2 {
+  .h_link-it-2 {
     color: #333;
     border: 1px #000;
     border-bottom: 5px solid rgba(25, 145, 235, .73);
@@ -243,20 +152,20 @@
     transition: background-color .3s;
   }
   
-  .link-it-2:hover {
+  .h_link-it-2:hover {
     background-color: rgba(25, 145, 235, .4);
   }
   
-  .link-it-2.gdj {
+  .h_link-it-2.gdj {
     color: #717177;
     border-bottom-color: rgba(240, 99, 1, .73);
   }
   
-  .link-it-2.gdj:hover {
+  .h_link-it-2.gdj:hover {
     background-color: rgba(240, 99, 1, .2);
   }
   
-  .author-column {
+  .h_author-column {
     text-align: left;
     margin-top: 50px;
     padding-left: 40px;
@@ -266,45 +175,45 @@
     top: 50px;
   }
   
-  .author-connect {
+  .h_author-connect {
     color: #c2c2c2;
     text-transform: uppercase;
     margin-top: 20px;
     margin-bottom: 20px;
-    font-family: Inter, sans-serif;
+    font-family: sofia-pro;
     font-size: 12px;
     display: block;
   }
   
-  .collection-list-wrapper-2 {
+  .h_collection-list-wrapper-2 {
     display: none;
   }
   
-  .images {
+  .h_images {
     text-align: left;
     margin-top: 20px;
     padding-top: 10px;
     padding-bottom: 17px;
   }
   
-  .text-block-20 {
+  .h_text-block-20 {
     color: #717177;
     letter-spacing: 0;
     text-transform: uppercase;
     margin-top: 20px;
     margin-bottom: 20px;
-    font-family: Inter, sans-serif;
+    font-family: sofia-pro;
     font-size: 16px;
     font-weight: 700;
   }
   
-  .content-section {
+  .h_content-section {
     z-index: 10;
     letter-spacing: .02em;
     background-color: #fff;
     padding-top: 47px;
     padding-bottom: 47px;
-    font-family: Inter, sans-serif;
+    font-family: sofia-pro;
     font-size: 1.25em;
     line-height: 1.5em;
     position: relative;
@@ -313,7 +222,7 @@
   
   .text-block-19 {
     color: #717177;
-    font-family: Inter, sans-serif;
+    font-family: sofia-pro;
     font-weight: 400;
     text-decoration: none;
   }
@@ -336,13 +245,13 @@
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
-    font-family: Inter, sans-serif;
+    font-family: proxima-nova;
     display: flex;
   }
   
   .middle-succes {
     text-align: center;
-    font-family: Inter, sans-serif;
+    font-family: proxima-nova;
   }
   
   .alternative-h2 {
@@ -350,7 +259,7 @@
     text-align: center;
     letter-spacing: 0;
     margin-top: 0;
-    font-family: Inter, sans-serif;
+    font-family: proxima-nova;
     font-size: 38px;
     font-weight: 700;
     line-height: 42px;
@@ -366,7 +275,7 @@
   .form-5 {
     border: 2px rgba(34, 33, 33, .86);
     border-radius: 0;
-    font-family: Inter, sans-serif;
+    font-family: sofia-pro;
   }
   
   .sign-up-field {
@@ -380,7 +289,7 @@
     border-top-left-radius: 4px;
     border-bottom-left-radius: 4px;
     margin-bottom: 0;
-    font-family: Inter, sans-serif;
+    font-family: sofia-pro;
     font-size: 18px;
     font-weight: 400;
     line-height: 27px;
@@ -404,7 +313,7 @@
     text-transform: uppercase;
     background-color: rgba(34, 33, 33, .8);
     border-radius: 0 4px 4px 0;
-    font-family: Inter, sans-serif;
+    font-family: proxima-nova;
     font-size: 1.25em;
     font-weight: 700;
     line-height: 1.5em;
@@ -439,7 +348,7 @@
   
   .paragraph-20 {
     color: rgba(34, 33, 33, .86);
-    font-family: Inter, sans-serif;
+    font-family: sofia-pro;
   }
   
   .subscribe-section {
@@ -463,7 +372,7 @@
     align-items: center;
     padding-top: 47px;
     padding-bottom: 47px;
-    font-family: Inter, sans-serif;
+    font-family: sofia-pro;
     display: block;
     position: relative;
     box-shadow: 0 -1px rgba(0, 0, 0, .07);
@@ -508,7 +417,7 @@
   }
   
   .image-7 {
-    background-image: url('../../public/images/BACKDROP.png');
+    background-image: url('../images/BACKDROP.png');
     background-position: 50%;
     background-size: 125px;
     border: 2px solid #323a44;
@@ -529,7 +438,7 @@
     align-items: center;
     padding-left: 4%;
     padding-right: 4%;
-    font-family: Inter, sans-serif;
+    font-family: proxima-nova;
     font-weight: 700;
     display: flex;
     position: fixed;
@@ -550,7 +459,7 @@
     width: auto;
     height: auto;
     background-color: rgba(0, 0, 0, 0);
-    background-image: url('../../public/images/icons8-beef-burger-1.svg');
+    background-image: url('../images/icons8-beef-burger-1.svg');
     background-position: 50%;
     background-repeat: no-repeat;
     background-size: 35px;
@@ -577,7 +486,7 @@
   
   .burger-menu.w--open {
     background-color: rgba(0, 0, 0, 0);
-    background-image: url('../../public/images/close.svg');
+    background-image: url('../images/close.svg');
     background-position: 50%;
     background-size: 35px;
     border-radius: 0%;
@@ -589,7 +498,7 @@
   .burger-menu.w--open:hover {
     opacity: .9;
     background-color: rgba(0, 0, 0, 0);
-    background-image: url('../../public/images/close.svg');
+    background-image: url('../images/close.svg');
     background-position: 50%;
     background-repeat: no-repeat;
     transform: translate(0);
@@ -597,7 +506,7 @@
   
   .navbar-3 {
     background-color: #323a44;
-    background-image: url('../../public/images/5c2012bffd28a73f7be9c035_Rectangle-2-Copy-7.png');
+    background-image: url('../images/5c2012bffd28a73f7be9c035_Rectangle-2-Copy-7.png');
     background-position: 0 0;
     background-size: 101px;
     flex: 0 auto;
@@ -635,12 +544,12 @@
     color: #484d52;
     text-align: center;
     background-color: rgba(0, 0, 0, 0);
-    background-image: url('../../public/images/Light-Background.svg');
+    background-image: url('../images/Light-Background.svg');
     background-position: 50%;
     background-size: 582px;
     padding-top: 120px;
     padding-left: 0;
-    font-family: Inter, sans-serif;
+    font-family: proxima-nova;
     overflow: hidden;
   }
   
@@ -665,7 +574,7 @@
     background-color: rgba(0, 0, 0, 0);
     padding-left: 2px;
     padding-right: 5px;
-    font-family: Inter, sans-serif;
+    font-family: sofia-pro;
     font-size: 1.2em;
     font-weight: 700;
     line-height: 1.7em;
@@ -686,7 +595,7 @@
     padding-top: 25px;
     padding-bottom: 22px;
     padding-left: 20px;
-    font-family: Inter, sans-serif;
+    font-family: sofia-pro;
     font-size: 16px;
     font-weight: 700;
     transition: color .3s;
@@ -701,7 +610,7 @@
   .nav-link-19.w--current {
     color: #aab2bd;
     text-align: center;
-    font-family: Inter, sans-serif;
+    font-family: proxima-nova;
   }
   
   .heading {
@@ -740,7 +649,7 @@
     align-items: center;
     padding-left: 4%;
     padding-right: 4%;
-    font-family: Inter, sans-serif;
+    font-family: proxima-nova;
     font-weight: 700;
     display: flex;
     position: fixed;
@@ -755,7 +664,7 @@
     width: auto;
     height: auto;
     background-color: rgba(0, 0, 0, 0);
-    background-image: url('../../public/images/Frame-2.svg');
+    background-image: url('../images/Frame-2.svg');
     background-position: 50%;
     background-repeat: no-repeat;
     background-size: 35px;
@@ -782,7 +691,7 @@
   
   .burger-menu-2.w--open {
     background-color: rgba(0, 0, 0, 0);
-    background-image: url('../../public/images/close.svg');
+    background-image: url('../images/close.svg');
     background-position: 50%;
     background-size: 50px;
     border-radius: 0%;
@@ -794,7 +703,7 @@
   .burger-menu-2.w--open:hover {
     opacity: .9;
     background-color: rgba(0, 0, 0, 0);
-    background-image: url('../../public/images/close.svg');
+    background-image: url('../images/close.svg');
     background-position: 50%;
     background-repeat: no-repeat;
     transform: translate(0);
@@ -807,12 +716,12 @@
     color: #484d52;
     text-align: center;
     background-color: #fff;
-    background-image: url('../../public/images/Light-Background.svg');
+    background-image: url('../images/Light-Background.svg');
     background-position: 50%;
     background-size: 582px;
     padding-top: 120px;
     padding-left: 0;
-    font-family: Inter, sans-serif;
+    font-family: proxima-nova;
     overflow: hidden;
   }
   
@@ -837,8 +746,6 @@
     margin-left: 15rem;
     margin-right: 0;
     padding-top: 23px;
-          background-color:red;
-
   }
   
   .button-group {
@@ -895,7 +802,7 @@
     max-width: 15rem;
     min-height: 100vh;
     outline-offset: 0px;
-    background-color: #ffffff;
+    background-color: #fff;
     outline: 1px solid rgba(0, 0, 0, .08);
     flex-direction: column;
     justify-content: space-between;
@@ -1937,7 +1844,7 @@
     color: #484d52;
     text-align: center;
     background-color: #fff;
-    background-image: url('../../public/images/Light-Background.svg');
+    background-image: url('../images/Light-Background.svg');
     background-position: 50%;
     background-size: 582px;
     padding-top: 120px;
@@ -1966,7 +1873,7 @@
   }
   
   .image-57 {
-    background-image: url('../../public/images/BACKDROP.png');
+    background-image: url('../images/BACKDROP.png');
     background-position: 50%;
     background-size: 125px;
     border: 2px solid #323a44;
@@ -1979,7 +1886,7 @@
     width: auto;
     height: auto;
     background-color: rgba(0, 0, 0, 0);
-    background-image: url('../../public/images/Frame-2.svg');
+    background-image: url('../images/Frame-2.svg');
     background-position: 50%;
     background-repeat: no-repeat;
     background-size: 35px;
@@ -2006,7 +1913,7 @@
   
   .burger-menu-3.w--open {
     background-color: rgba(0, 0, 0, 0);
-    background-image: url('../../public/images/close.svg');
+    background-image: url('../images/close.svg');
     background-position: 50%;
     background-size: 50px;
     border-radius: 0%;
@@ -2018,7 +1925,7 @@
   .burger-menu-3.w--open:hover {
     opacity: .9;
     background-color: rgba(0, 0, 0, 0);
-    background-image: url('../../public/images/close.svg');
+    background-image: url('../images/close.svg');
     background-position: 50%;
     background-repeat: no-repeat;
     transform: translate(0);
@@ -2146,10 +2053,6 @@
   .body-3 {
     padding-left: 292px;
   }
-
-  
-
-
   
   .heading-3 {
     margin-bottom: 32px;
@@ -2169,8 +2072,6 @@
     font-size: 16px;
     text-decoration: underline;
   }
-
-  
   
   .div-block-6 {
     grid-column-gap: 0px;
@@ -2191,66 +2092,10 @@
   
   .div-block-7 {
     margin-top: 22px;
-    line-height: 24px;
-    font-weight: 500;
-    color: #00081f;
-
-  }
-
-  hr{
-    opacity: .4;
-  }
-
-  a {
-    color: #878787;
-    text-decoration: underline;
-  }
-
-  .wp-block-pullquote{
-    background-color: #f4f4f4 !important;
-    border-left: 4px solid #e0e0e0 !important;
-    padding-top: 10px !important;
-    padding-bottom: 4px !important;
-    padding-left: 20px !important;
-    padding-right: 20px !important;
-
-    margin-bottom: 20px !important;
-    /* Override the inline styles */
-    border-style: none !important;
-    border-width: 0px !important;
-    border-radius: 6px !important;
-    font-size: 16px !important;
-    
-  }
-
-  blockquote {
-    /* Override blockquote styles */
-    margin: 0;
-    padding: 0;
-    border: none;
-    font-size: 16px;
-    
-  }
-
-  .backbutton {
-    margin-bottom: 10px;
-    border-radius: 4px;
-    padding:5px 10px;
-    
   }
   
-
-
   .div-block-8 {
     margin-top: 58px;
-    font-family: Inter, sans-serif;
-  }
-
-  .content-for-website {
-    font-family: Inter, sans-serif;
-
-
-    
   }
   
   .dropdown-toggle {
@@ -2344,7 +2189,7 @@
     width: 60px;
     height: 38px;
     background-color: #fff;
-    background-image: url('../../public/images/material-symbols_search.svg');
+    background-image: url('../images/material-symbols_search.svg');
     background-position: 50%;
     background-repeat: no-repeat;
     background-size: auto;
@@ -2354,7 +2199,6 @@
     margin-right: 20px;
     padding-left: 0;
     padding-right: 7px;
-    color:transparent;
   }
   
   .search-input {
@@ -2462,7 +2306,7 @@
     width: 100%;
     height: 100%;
     background-color: rgba(0, 0, 0, 0);
-    background-image: url('../../public/images/fluent_send-24-regular-1.svg');
+    background-image: url('../images/fluent_send-24-regular-1.svg');
     background-position: 50%;
     background-repeat: no-repeat;
     background-size: auto;
@@ -2487,7 +2331,7 @@
   .link-block-22 {
     width: 100%;
     height: 100%;
-    background-image: url('../../public/images/Frame-2.svg');
+    background-image: url('../images/Frame-2.svg');
     background-position: 50%;
     background-repeat: no-repeat;
     background-size: auto;
@@ -2552,7 +2396,7 @@
     .form-wrapper-2 {
       padding-left: 0;
       padding-right: 0;
-      font-family: Inter, sans-serif;
+      font-family: sofia-pro;
     }
   
     .subscribe-section {
@@ -2577,7 +2421,7 @@
     .nav-bar-2 {
       width: 100%;
       background-color: rgba(0, 0, 0, 0);
-      background-image: url('../../public/images/5c2012bffd28a73f7be9c035_Rectangle-2-Copy-7.png');
+      background-image: url('../images/5c2012bffd28a73f7be9c035_Rectangle-2-Copy-7.png');
       background-position: 0 0;
       background-size: 101px;
       justify-content: center;
@@ -2628,7 +2472,7 @@
     .nav-bar-3 {
       width: 100%;
       background-color: rgba(0, 0, 0, 0);
-      background-image: url('../../public/images/5c2012bffd28a73f7be9c035_Rectangle-2-Copy-7.png');
+      background-image: url('../images/5c2012bffd28a73f7be9c035_Rectangle-2-Copy-7.png');
       background-position: 0 0;
       background-size: 101px;
       justify-content: center;
@@ -2672,7 +2516,6 @@
       width: 100%;
       background-color: rgba(64, 85, 95, .05);
       padding-right: 0;
-      
     }
   
     .fs-styleguide_4-col {
@@ -2711,7 +2554,6 @@
       grid-column-gap: 2rem;
       grid-row-gap: 2rem;
       grid-template-columns: 1fr;
-      
     }
   
     .margin-medium {
@@ -2731,7 +2573,6 @@
       width: 87vw;
       height: 100vh;
       background-color: #fff;
-      
     }
   
     .padding-left {
@@ -2861,7 +2702,7 @@
     .nav-bar-4 {
       width: 100%;
       background-color: rgba(0, 0, 0, 0);
-      background-image: url('../../public/images/5c2012bffd28a73f7be9c035_Rectangle-2-Copy-7.png');
+      background-image: url('../images/5c2012bffd28a73f7be9c035_Rectangle-2-Copy-7.png');
       background-position: 0 0;
       background-size: 101px;
       justify-content: center;
@@ -2964,7 +2805,7 @@
     .alternative-h2 {
       color: #333;
       text-align: center;
-      font-family: Inter, sans-serif;
+      font-family: proxima-nova;
       font-weight: 700;
     }
   
@@ -2980,7 +2821,7 @@
     .subscribe-section {
       padding-left: 28px;
       padding-right: 28px;
-      font-family: Inter, sans-serif;
+      font-family: sofia-pro;
     }
   
     .content-section-2 {
@@ -3331,7 +3172,7 @@
       color: #333;
       text-align: left;
       letter-spacing: .25px;
-      font-family: Inter, sans-serif;
+      font-family: proxima-nova;
       font-size: 27px;
       font-weight: 700;
       line-height: 32px;
@@ -3356,7 +3197,7 @@
       color: rgba(36, 36, 36, .89);
       letter-spacing: .25px;
       margin-bottom: 13px;
-      font-family: Inter, sans-serif;
+      font-family: sofia-pro;
       font-size: 16px;
       line-height: 27px;
       display: block;
@@ -3364,7 +3205,7 @@
   
     .sign-up-button {
       width: 100%;
-      font-family: Inter, sans-serif;
+      font-family: proxima-nova;
     }
   
     .subscribe-section {
@@ -3452,7 +3293,7 @@
   
     .burger-menu-2 {
       background-color: rgba(0, 0, 0, 0);
-      background-image: url('../../public/images/Frame-2.svg');
+      background-image: url('../images/Frame-2.svg');
       margin-top: 16px;
       margin-left: 10px;
       top: -10px;

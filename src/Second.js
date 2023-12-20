@@ -13,7 +13,7 @@ import Home from './Home';
 //import i18n 
 
 
-const App = () => {
+const Second = () => {
   const [postTypesPosts, setPostTypesPosts] = useState({});
   const [isLoading, setIsLoading] = useState(true);
   
@@ -130,8 +130,8 @@ const App = () => {
         
         {/* You can replace the above with a spinner or any loading animation you prefer */}
       </div>
-    ) : (
-      <BrowserRouter>
+    ) : (<> 
+      
   <NavbarMain posts={Object.keys(postTypesPosts)} />
   <Routes>
     <Route path="/" element={
@@ -194,7 +194,7 @@ const App = () => {
   <div className="div-block-8 not-listening">
     <div className="w-layout-blockcontainer w-container">
       <div className="country-title">
-        <h1 className="heading-3">Ukraine -&gt; USA</h1>
+        <h1 className="heading-3">Ukraine -&gt; WA</h1>
       </div>
       <div className="div-block-12">
         <a href="#" className="link-block-20 w-inline-block">
@@ -266,29 +266,12 @@ const App = () => {
         </div>
       </div>
       <div className="div-block-6">
-        <a
-          id="w-node-_049fd62e-9840-648c-7650-c63f74ab0635-e0625fb8"
-          href="#"
-          className="link"
-        >
-          VISA
-        </a>
-        <a href="#" className="link">
-          Legal
-        </a>
-        <a href="#" className="link">
-          Employment
-        </a>
-        <a href="#" className="link">
-          Culture
-        </a>
-        <a href="#" className="link">
-          Community
-        </a>
-        <a href="#" className="link">
-          Blog
-        </a>
-      </div>
+  {Object.keys(postTypesPosts).reverse().map((postType) => (
+    <Link to={`/wa/${postType}`} className="styleguide_link" key={postType}>
+      {postType}
+    </Link>
+  ))}
+</div>
       <div className="div-block-7">
       
         {/* <select className="select-dropdown" onChange={e => handleLanguageChange(e.target.value)}>
@@ -304,8 +287,8 @@ const App = () => {
         hasSearched={hasSearched}  />
 
 
-        <p>lorem ipsum</p>
-
+        <p>Welcome to Washington State!</p>
+ 
         
       </div>
     </div>
@@ -324,7 +307,7 @@ const App = () => {
       <div data-hover="false" data-delay={0} className="w-dropdown">
         <div className="w-dropdown-toggle">
           <div className="w-icon-dropdown-toggle" />
-          <div className="text-block-22">EN</div>
+          <div className="text-block-22">EN</div> 
         </div>
 
 
@@ -358,17 +341,15 @@ const App = () => {
   
 
 
-        
+         
         {/* other homepage components */}
       </>
     }/>
-    {Object.entries(postTypesPosts).map(([postType, posts], index) => (
-        
-        <Route path={`/:type`} key={index} element={<PostTypeContent />} />
+    {Object.entries(postTypesPosts).map(([postType], index) => (
+              <Route path={`/:type`} key={index} element={<PostTypeContent />} />
 
     ))}
-  </Routes>
-</BrowserRouter> )}
+  </Routes> </> )}
 
  
 
@@ -386,4 +367,4 @@ const App = () => {
   );
 }
 
-export default App;
+export default Second;

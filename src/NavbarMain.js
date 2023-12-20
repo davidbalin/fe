@@ -7,11 +7,12 @@ const NavbarMain = ({ posts }) => {
   return (
     <div className="styleguide_sidebar">
       <div className="styleguide_list">
-        <h1 className="text-big">Ukraine -&gt; USA</h1>
+        <h1 className="text-big">Ukraine -&gt; WA</h1>
         <div className="nav-menu-wrapper">
           <div className="nav-link-wrapper">
             {reversedPosts.map((postType) => (
-              <Link to={`/${postType}`} className="styleguide_link" key={postType}>
+                          <Link to={`/wa/${postType}`} className="styleguide_link" key={postType}>
+
                 <strong className="bold-text-2">{postType}</strong>
               </Link>
             ))}
